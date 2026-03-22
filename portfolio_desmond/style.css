@@ -31,11 +31,25 @@ html { scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
+  background-image: url('images/bgim.avif');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--text);
   font-family: var(--font-mono);
   font-size: 15px;
   line-height: 1.7;
   overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 12, 16, 0.82); /* dark tint over the image */
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* NOISE OVERLAY */
