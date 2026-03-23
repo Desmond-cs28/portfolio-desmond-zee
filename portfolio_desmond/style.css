@@ -295,11 +295,7 @@ section { position: relative; z-index: 1; }
 .avatar-hex {
   width: 100%;
   height: 100%;
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  border: 1px solid var(--border2);
-  overflow: hidden;
-  animation: morph 10s ease-in-out infinite;
-  position: relative;
+  border-radius: 50%;
 }
 
 .avatar-photo {
