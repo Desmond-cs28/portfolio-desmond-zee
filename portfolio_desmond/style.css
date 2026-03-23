@@ -690,7 +690,7 @@ section { position: relative; z-index: 1; }
 
 .contact-intro {
   font-size: 0.9rem;
-  color: var(--muted);
+  color: whitesmoke;
   line-height: 1.8;
   margin-bottom: 2rem;
 }
