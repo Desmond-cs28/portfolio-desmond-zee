@@ -18,6 +18,8 @@
   --card:         #0f1a20;
   --font-display: 'Syne', sans-serif;
   --font-mono:    'Space Mono', monospace;
+  --slide-dur:    600ms;
+  --slide-ease:   cubic-bezier(0.77, 0, 0.18, 1);
 }
 
 /* RESET */
@@ -27,7 +29,7 @@
   padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; }
 
 body {
   background: var(--bg);
@@ -41,13 +43,15 @@ body {
   font-size: 15px;
   line-height: 1.7;
   overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh;
 }
 
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(8, 12, 16, 0.82); /* dark tint over the image */
+  background: rgba(8, 12, 16, 0.82);
   pointer-events: none;
   z-index: 0;
 }
@@ -140,11 +144,136 @@ nav {
 
 .nav-links a:hover { color: gold; }
 .nav-links a:hover::after { width: 100%; }
+.nav-links a.nav-active { color: var(--accent) !important; }
+.nav-links a.nav-active::after { width: 100%; }
+
+/* ============================================================
+   SLIDE PANEL SYSTEM
+   ============================================================ */
+
+section.slide-panel {
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform var(--slide-dur) var(--slide-ease),
+    opacity   var(--slide-dur) var(--slide-ease);
+  will-change: transform, opacity;
+  z-index: 1;
+  scrollbar-gutter: stable;
+}
+
+section.slide-panel.slide-active {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+section.slide-panel.slide-enter-from-right {
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: visible;
+}
+
+section.slide-panel.slide-enter-from-left {
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: visible;
+}
+
+section.slide-panel.slide-exit-left {
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: visible;
+  transition:
+    transform var(--slide-dur) var(--slide-ease),
+    opacity   var(--slide-dur) var(--slide-ease);
+  z-index: 1;
+}
+
+section.slide-panel.slide-exit-right {
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: visible;
+  transition:
+    transform var(--slide-dur) var(--slide-ease),
+    opacity   var(--slide-dur) var(--slide-ease);
+  z-index: 1;
+}
+
+/* Progress dots bar */
+.slide-progress {
+  position: fixed;
+  bottom: 1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.slide-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s, width 0.3s;
+}
+
+.slide-dot.active {
+  background: var(--accent);
+  width: 22px;
+  border-radius: 3px;
+  transform: scaleY(1.1);
+}
+
+.slide-dot:hover:not(.active) {
+  background: var(--muted);
+}
+
+/* Arrow hints */
+.slide-hint {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(99, 216, 171, 0.06);
+  border: 1px solid var(--border);
+  color: var(--muted2);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  user-select: none;
+}
+
+.slide-hint:hover {
+  background: rgba(99, 216, 171, 0.12);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.slide-hint.prev { left: 1rem; }
+.slide-hint.next { right: 1rem; }
+.slide-hint.hidden { opacity: 0; pointer-events: none; }
 
 /* ============================================================
    LAYOUT
    ============================================================ */
-section { position: relative; z-index: 1; }
+section { position: relative; }
 
 .container {
   max-width: 1100px;
@@ -307,7 +436,6 @@ section { position: relative; z-index: 1; }
   display: block;
 }
 
-/* Floating badges */
 .floating-badge {
   position: absolute;
   background: var(--card);
@@ -770,7 +898,6 @@ footer {
 
 footer span { color: var(--accent); }
 
-/* Footer social icons strip */
 .footer-socials {
   display: flex;
   justify-content: center;
@@ -808,10 +935,8 @@ footer span { color: var(--accent); }
   pointer-events: none;
 }
 
-/* GitHub logo: white on dark bg */
 .github-logo { filter: invert(1) brightness(1.8); }
 
-/* Social logos inside .contact-link cards */
 .contact-link-icon { overflow: hidden; padding: 3px; }
 
 .social-logo {
@@ -885,6 +1010,7 @@ footer span { color: var(--accent); }
   .skills-grid           { grid-template-columns: 1fr 1fr; }
   .projects-grid         { grid-template-columns: 1fr; }
   .community-grid        { grid-template-columns: 1fr; }
+  .slide-hint            { display: none; }
 }
 
 @media (max-width: 600px) {

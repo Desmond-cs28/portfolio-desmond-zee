@@ -10,11 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
 
-  <!-- ═══════════════════════════════════════════════
-       SECURITY HEADERS (meta-layer hardening)
-       ═══════════════════════════════════════════════ -->
-
-  <!-- Content Security Policy: only allow resources from own origin + trusted CDNs -->
   <meta http-equiv="Content-Security-Policy"
         content="
           default-src 'self';
@@ -28,26 +23,12 @@
           base-uri    'self';
           form-action 'self';
         "/>
-
-  <!-- Stop browsers leaking the referring URL to external sites -->
   <meta name="referrer" content="no-referrer"/>
-
-  <!-- Prevent MIME-type sniffing attacks -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
-
-  <!-- Block clickjacking via iframes -->
   <meta http-equiv="X-Frame-Options" content="DENY"/>
-
-  <!-- Force HTTPS (remembered for 1 year) -->
-  <meta http-equiv="Strict-Transport-Security"
-        content="max-age=31536000; includeSubDomains"/>
-
-  <!-- Disable browser XSS filter bypass tricks -->
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains"/>
   <meta http-equiv="X-XSS-Protection" content="1; mode=block"/>
-
-  <!-- Control what browser features this page can use -->
-  <meta http-equiv="Permissions-Policy"
-        content="camera=(), microphone=(), geolocation=(), payment=()"/>
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()"/>
 </head>
 <body>
 
@@ -130,7 +111,7 @@
         emerging technologies, and volunteer with community coding programs across Accra.</p>
         <br/>
         <a href="my_cv/cv_desmond_z.pdf" download class="btn btn-primary">
-        Download CV
+          Download CV
         </a>
       </div>
       <div class="about-stats reveal" style="transition-delay: 0.15s;">
@@ -146,7 +127,6 @@
           <div class="stat-num">300+</div>
           <div class="stat-label">Hours Volunteered</div>
         </div>
-        </div>
       </div>
     </div>
   </div>
@@ -160,7 +140,6 @@
       <h2 class="section-title">My Academic Journey</h2>
     </div>
     <div class="timeline">
-
       <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
@@ -182,7 +161,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -307,16 +285,14 @@
       <h2 class="section-title">Where I've Worked At</h2>
     </div>
     <div class="timeline">
-
       <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-meta">
-            <!-- ADD  INTERNSHIP DETAILS HERE LATER -->
+            <!-- ADD INTERNSHIP DETAILS HERE LATER -->
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -348,7 +324,7 @@
           <div class="community-title">Homecoming Annual Quiz</div>
           <div class="community-org">Kyaang · 2019 - present</div>
           <div class="community-desc">
-            Moderate Quiz program for high schools in the Nadowli Kaleo District
+            Moderate Quiz program for high schools in the Nadowli Kaleo District.
           </div>
         </div>
       </div>
@@ -395,69 +371,41 @@
         </p>
         <div class="contact-links">
 
-          <!-- Email -->
           <a href="mailto:zambogunaad@gmail.com" class="contact-link">
             <div class="contact-link-icon">
-              <img src="images/gmail-logo.jpg"
-                   alt="Gmail"
-                   class="social-logo"
-                   draggable="false"/>
+              <img src="images/gmail-logo.jpg" alt="Gmail" class="social-logo" draggable="false"/>
             </div>
             <span>zambogunaad@gmail.com</span>
           </a>
 
-          <!-- LinkedIn -->
           <a href="https://www.linkedin.com/in/desmond-zambogunaa/"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="contact-link">
+             target="_blank" rel="noopener noreferrer" class="contact-link">
             <div class="contact-link-icon">
-              <img src="images/linkedinlogo.png"
-                   alt="LinkedIn"
-                   class="social-logo"
-                   draggable="false"/>
+              <img src="images/linkedinlogo.png" alt="LinkedIn" class="social-logo" draggable="false"/>
             </div>
             <span>linkedin.com/in/desmond-zambogunaa</span>
           </a>
 
-          <!-- GitHub -->
           <a href="https://github.com/Desmond-cs28"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="contact-link">
+             target="_blank" rel="noopener noreferrer" class="contact-link">
             <div class="contact-link-icon">
-              <img src="images/githublogo.png"
-                   alt="GitHub"
-                   class="social-logo github-logo"
-                   draggable="false"/>
+              <img src="images/githublogo.png" alt="GitHub" class="social-logo github-logo" draggable="false"/>
             </div>
             <span>github.com/Desmond-cs28</span>
           </a>
 
-          <!-- Instagram -->
           <a href="https://www.instagram.com/desmo_ndz/"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="contact-link">
+             target="_blank" rel="noopener noreferrer" class="contact-link">
             <div class="contact-link-icon">
-              <img src="images/instagram-logo.jpg"
-                   alt="Instagram"
-                   class="social-logo"
-                   draggable="false"/>
+              <img src="images/instagram-logo.jpg" alt="Instagram" class="social-logo" draggable="false"/>
             </div>
             <span>desmo_ndz</span>
           </a>
 
-          <!-- Facebook -->
           <a href="https://www.facebook.com/desmond-zambogunaa"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="contact-link">
+             target="_blank" rel="noopener noreferrer" class="contact-link">
             <div class="contact-link-icon">
-              <img src="images/facebook-logo.png"
-                   alt="Facebook"
-                   class="social-logo"
-                   draggable="false"/>
+              <img src="images/facebook-logo.png" alt="Facebook" class="social-logo" draggable="false"/>
             </div>
             <span>desmond-zambogunaa</span>
           </a>
@@ -466,7 +414,6 @@
       </div>
 
       <form class="contact-form reveal" style="transition-delay: 0.15s;" onsubmit="handleSubmit(event)">
-        <!-- Honeypot: hidden from humans, catches bots -->
         <input type="text" name="honeypot" style="display:none;" tabindex="-1" autocomplete="off"/>
         <div class="form-group">
           <label class="form-label">Name</label>
@@ -490,44 +437,41 @@
       </form>
 
     </div>
+
+    <!-- FOOTER moved inside contact section so it scrolls with it -->
+    <footer>
+      <hr class="footer-divider"/>
+      <p>Designed &amp; built by <span>Desmond Zambogunaa</span> — 2026</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/desmond-zambogunaa/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="LinkedIn" class="footer-social-link">
+          <img src="images/linkedinlogo.png" alt="LinkedIn" class="footer-social-icon"/>
+        </a>
+        <a href="https://github.com/Desmond-cs28"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="GitHub" class="footer-social-link">
+          <img src="images/githublogo.png" alt="GitHub" class="footer-social-icon github-logo"/>
+        </a>
+        <a href="https://www.instagram.com/desmo_ndz/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Instagram" class="footer-social-link">
+          <img src="images/instagram-logo.jpg" alt="Instagram" class="footer-social-icon"/>
+        </a>
+        <a href="https://www.facebook.com/desmond-zambogunaa"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Facebook" class="footer-social-link">
+          <img src="images/facebook-logo.png" alt="Facebook" class="footer-social-icon"/>
+        </a>
+        <a href="mailto:zambogunaad@gmail.com"
+           aria-label="Gmail" class="footer-social-link">
+          <img src="images/gmail-logo.jpg" alt="Gmail" class="footer-social-icon"/>
+        </a>
+      </div>
+    </footer>
+
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    Designed &amp; built by <span>Desmond Zambogunaa</span> — 2026
-
-    <!-- Footer social icons strip -->
-    <div class="footer-socials">
-      <a href="https://www.linkedin.com/in/desmond-zambogunaa/"
-         target="_blank" rel="noopener noreferrer"
-         aria-label="LinkedIn" class="footer-social-link">
-        <img src="images/linkedinlogo.png" alt="LinkedIn" class="footer-social-icon"/>
-      </a>
-      <a href="https://github.com/Desmond-cs28"
-         target="_blank" rel="noopener noreferrer"
-         aria-label="GitHub" class="footer-social-link">
-        <img src="images/githublogo.png" alt="GitHub" class="footer-social-icon github-logo"/>
-      </a>
-      <a href="https://www.instagram.com/desmo_ndz/"
-         target="_blank" rel="noopener noreferrer"
-         aria-label="Instagram" class="footer-social-link">
-        <img src="images/instagram-logo.jpg" alt="Instagram" class="footer-social-icon"/>
-      </a>
-      <a href="https://www.facebook.com/desmond-zambogunaa
-         target="_blank" rel="noopener noreferrer"
-         aria-label="Facebook" class="footer-social-link">
-        <img src="images/facebook-logo.png" alt="Facebook" class="footer-social-icon"/>
-      </a>
-      <a href="mailto:zambogunaad@gmail.com"
-         aria-label="Gmail" class="footer-social-link">
-        <img src="images/gmail-logo.jpg" alt="Gmail" class="footer-social-icon"/>
-      </a>
-    </div>
-
-  </div>
-</footer>
 
 <script src="script.js" nonce="dz2026portfolio"></script>
 </body>
