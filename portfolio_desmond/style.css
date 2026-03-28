@@ -789,14 +789,14 @@ section { position: relative; }
 
 .community-org {
   font-size: 0.75rem;
-  color: var(--accent3);
+  color: greenyellow;
   margin-bottom: 0.6rem;
   letter-spacing: 0.05em;
 }
 
 .community-desc {
   font-size: 0.82rem;
-  color: var(--muted);
+  color: whitesmoke;
   line-height: 1.75;
 }
 
