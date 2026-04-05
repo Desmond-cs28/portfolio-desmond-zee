@@ -335,7 +335,7 @@ section { position: relative; }
 .hero-role span { color: var(--accent2); }
 
 .hero-bio {
-  font-size: 0.92rem;
+  font-size: 1rem;
   color: whitesmoke;
   line-height: 1.8;
   max-width: 440px;
@@ -500,7 +500,7 @@ section { position: relative; }
   align-items: start;
 }
 
-.about-text p { color: whitesmoke; font-size: 0.9rem; margin-bottom: 1rem; }
+.about-text p { color: whitesmoke; font-size: 1.0rem; margin-bottom: 1rem; }
 .about-text strong { color: whitesmoke; }
 
 .about-stats {
@@ -710,7 +710,7 @@ section { position: relative; }
 
 .timeline-role {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #fff;
 }
@@ -727,18 +727,18 @@ section { position: relative; }
 }
 
 .timeline-company {
-  font-size: 0.82rem;
+  font-size: 1.3rem;
   color: var(--accent2);
   margin-bottom: 0.8rem;
 }
 
 .timeline-desc {
-  font-size: 0.83rem;
+  font-size: 1.0rem;
   color: whitesmoke;
   line-height: 1.8;
 }
 
-.timeline-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+.timeline-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
 
 /* ============================================================
    COMMUNITY
@@ -1017,4 +1017,247 @@ footer span { color: var(--accent); }
   .nav-links   { display: none; }
   .skills-grid { grid-template-columns: 1fr; }
   .about-stats { grid-template-columns: 1fr 1fr; }
+}
+/* ============================================================
+   MOBILE RESPONSIVE — Add/replace at the bottom of style.css
+   Covers iOS & Android (320px – 900px)
+   ============================================================ */
+
+/* ── Hamburger button (hidden on desktop) ──────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 200;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animate hamburger → X when menu is open */
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── Mobile nav drawer ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-hamburger { display: flex; }
+
+  nav {
+    padding: 0.65rem 1.2rem;
+    position: fixed;
+    z-index: 300;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(8, 15, 16, 0.97);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    z-index: 299;
+  }
+
+  .nav-links.open {
+    max-height: 400px;
+    padding: 0.5rem 0 1rem;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+  }
+
+  .nav-links a::after { display: none; }
+}
+
+/* ── Body & slide panel scroll fix ────────────────────────── */
+@media (max-width: 900px) {
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+  }
+
+  section.slide-panel {
+    position: relative;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow-y: visible;
+    overflow-x: hidden;
+  }
+
+  .slide-progress,
+  .slide-hint { display: none !important; }
+}
+
+/* ── Fix background-attachment: fixed on iOS ───────────────── */
+@media (max-width: 900px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+/* ── Hero section ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  #hero {
+    padding: 6rem 0 3rem;
+    min-height: auto;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .hero-bio { max-width: 100%; margin-left: auto; margin-right: auto; }
+
+  .hero-cta { justify-content: center; }
+
+  .hero-visual { display: flex; }
+
+  .avatar-wrapper {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  .floating-badge { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero-name { font-size: clamp(2rem, 10vw, 2.8rem); }
+
+  .hero-tag {
+    font-size: 0.65rem;
+    padding: 0.35rem 0.75rem;
+    display: block;
+    text-align: center;
+  }
+
+  .avatar-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* ── Container padding ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .container { padding: 0 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 1rem; }
+}
+
+/* ── Section vertical spacing ──────────────────────────────── */
+@media (max-width: 768px) {
+  #about,
+  #education,
+  #skills,
+  #projects,
+  #internships,
+  #community,
+  #contact    { padding: 4rem 0; }
+}
+
+/* ── About section ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+}
+
+@media (max-width: 480px) {
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .stat-card { padding: 1rem; }
+  .stat-num { font-size: 1.6rem; }
+}
+
+/* ── Skills grid ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Projects grid ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Community grid ────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .community-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Contact section ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 480px) {
+  .contact-link { font-size: 0.78rem; padding: 0.75rem 1rem; word-break: break-all; }
+}
+
+/* ── Timeline ──────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .timeline { padding-left: 1.8rem; }
+  .timeline-dot { left: -2rem; }
+  .timeline-meta { flex-direction: column; gap: 0.4rem; }
+  .timeline-card { padding: 1.2rem 1.4rem; }
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .btn { padding: 0.65rem 1.4rem; font-size: 0.75rem; }
+  .hero-cta { flex-direction: column; align-items: center; }
+  .hero-cta .btn { width: 100%; max-width: 260px; text-align: center; }
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  footer { padding: 2rem 0; font-size: 0.7rem; }
+  .footer-socials { gap: 0.85rem; flex-wrap: wrap; }
+}
+
+/* ── Disable cursor glow on touch devices ──────────────────── */
+@media (hover: none) {
+  .cursor-glow { display: none; }
 }

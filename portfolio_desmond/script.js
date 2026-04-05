@@ -5,6 +5,67 @@
 /* ════════════════════════════════════════════════════════════
    0. SECURITY HARDENING
    ════════════════════════════════════════════════════════════ */
+   /* ============================================================
+   MOBILE ADDITIONS — paste at the TOP of script.js
+   ============================================================ */
+
+const isMobile = () => window.innerWidth <= 900;
+
+/* ── Hamburger menu ─────────────────────────────────────────── */
+function initHamburger() {
+  const nav = document.querySelector('nav');
+  const navLinks = document.querySelector('.nav-links');
+
+  const hamburger = document.createElement('button');
+  hamburger.className = 'nav-hamburger';
+  hamburger.setAttribute('aria-label', 'Toggle navigation menu');
+  hamburger.innerHTML = '<span></span><span></span><span></span>';
+  nav.appendChild(hamburger);
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target)) {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+    }
+  });
+}
+
+/* ── Disable slide system on mobile ─────────────────────────── */
+function disableSlidesOnMobile() {
+  if (!isMobile()) return;
+  document.querySelectorAll('section[id]').forEach(sec => {
+    sec.classList.remove(
+      'slide-panel', 'slide-active',
+      'slide-enter-from-right', 'slide-enter-from-left',
+      'slide-exit-left', 'slide-exit-right'
+    );
+  });
+}
+
+/* ── Re-check on rotate/resize ──────────────────────────────── */
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(disableSlidesOnMobile, 150);
+});
+
+/* ── Boot ───────────────────────────────────────────────────── */
+initHamburger();
+disableSlidesOnMobile();
 
 (function blockDevTools() {
   const threshold = 160;
@@ -354,7 +415,7 @@ if (roleEl) {
 /* ════════════════════════════════════════════════════════════
    12. BOOT
    ════════════════════════════════════════════════════════════ */
-initSlides();
+if (window.innerWidth > 900) initSlides();
 buildDotsAndArrows();
 wireNavLinks();
 updateNavActive(currentSectionId);
