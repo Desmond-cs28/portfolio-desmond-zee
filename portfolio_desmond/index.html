@@ -66,7 +66,7 @@
           <span>&lt;</span> Solving real-world problems with technology <span>/&gt;</span>
         </p>
         <p class="hero-bio animate-in delay-3">
-          Sophomore Computer Science student passionate about full-stack development,
+          Level 300 Computer Science student passionate about full-stack development,
           machine learning, and building software that solves real-world problems.
           Currently seeking internship opportunities for 2026.
         </p>
@@ -102,7 +102,7 @@
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>Hi! I'm <strong>Desmond Zambogunaa</strong>, a 200-level Computer Science student at
+        <p>Hi! I'm <strong>Desmond Zambogunaa</strong>, a 300-level Computer Science student at
         Palm University College, specialising in software engineering and Computer Networking.</p>
         <p>My journey in tech started with a curiosity to understand <strong>how computers actually
         work</strong>. Today, I build full-stack web applications, experiment with machine learning
@@ -110,7 +110,7 @@
         <p>When I'm not coding, I mentor fellow software development enthusiasts, read about
         emerging technologies, and volunteer with community coding programs across Accra.</p>
         <br/>
-        <a href="my_cv/cv_desmond_z.pdf" download class="btn btn-primary">
+        <a href="my_cv/DESMOND_CV...pdf" download class="btn btn-primary">
           Download CV
         </a>
       </div>
@@ -289,10 +289,49 @@
       <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
-          <p class="timeline-open">
-            I am currently open to internship opportunities in Junior Software development, Front-End, Back-End, and Full-Stack Development, 
-            with a strong interest in Full-Stack Development. I am comfortable with html/css, Javascript, python, C++, Java, and React.js.
-          </p>
+          <div class="timeline-meta">
+            <div>
+              <div class="timeline-role">Technology and Innovation Intern</div>
+              <div class="timeline-company">STEM4ALL</div>
+            </div>
+            <div class="timeline-period">Internship</div>
+          </div>
+          <div class="timeline-desc">
+            Supported technology-driven initiatives focused on advancing innovation and STEM education.
+            Contributed to research, project support, digital solution exploration, and the development of
+            practical strategies that strengthen the organisation’s impact in technology and learning.
+          </div>
+          <div class="timeline-tags">
+            <span class="stack-tag">Innovation</span>
+            <span class="stack-tag">STEM</span>
+            <span class="stack-tag">Research</span>
+            <span class="stack-tag">Project Support</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <div>
+              <div class="timeline-role">CSR Intern</div>
+              <div class="timeline-company">Amalitech Ghana</div>
+            </div>
+            <div class="timeline-period">Current</div>
+          </div>
+          <div class="timeline-desc">
+            Currently supporting the Corporate Social Responsibility function by contributing to meaningful
+            community-focused initiatives, stakeholder engagement, and social impact programs that align
+            business purpose with societal development. This role strengthens my ability to combine technology,
+            collaboration, and responsible business practices in creating lasting value for communities.
+          </div>
+          <div class="timeline-tags">
+            <span class="stack-tag">CSR</span>
+            <span class="stack-tag">Community Impact</span>
+            <span class="stack-tag">Stakeholder Engagement</span>
+            <span class="stack-tag">Social Responsibility</span>
+          </div>
         </div>
       </div>
     </div>
@@ -415,27 +454,30 @@
         </div>
       </div>
 
-      <form class="contact-form reveal" style="transition-delay: 0.15s;" onsubmit="handleSubmit(event)">
+      <form class="contact-form reveal" id="contact-form" action="https://formsubmit.co/ajax/zambogunaad@gmail.com" method="POST" accept-charset="UTF-8" style="transition-delay: 0.15s;" onsubmit="handleSubmit(event)">
         <input type="text" name="honeypot" style="display:none;" tabindex="-1" autocomplete="off"/>
+        <input type="hidden" name="_captcha" value="false"/>
+        <input type="hidden" name="_subject" value="New portfolio message"/>
         <div class="form-group">
           <label class="form-label">Name</label>
-          <input type="text" class="form-input" placeholder="Your name" required/>
+          <input type="text" name="name" class="form-input" placeholder="Your name" required/>
         </div>
         <div class="form-group">
           <label class="form-label">Email</label>
-          <input type="email" class="form-input" placeholder="your@email.com" required/>
+          <input type="email" name="email" class="form-input" placeholder="your@email.com" required/>
         </div>
         <div class="form-group">
           <label class="form-label">Subject</label>
-          <input type="text" class="form-input" placeholder="What's this about?"/>
+          <input type="text" name="subject" class="form-input" placeholder="What's this about?"/>
         </div>
         <div class="form-group">
           <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell me what's on your mind..." required></textarea>
+          <textarea name="message" class="form-textarea" placeholder="Tell me what's on your mind..." required></textarea>
         </div>
         <button type="submit" class="btn btn-primary" id="submit-btn" style="align-self: flex-start;">
           Send Message →
         </button>
+        <div id="form-status" aria-live="polite" style="min-height: 1.2rem; font-size: 0.8rem; color: var(--accent);"></div>
       </form>
 
     </div>

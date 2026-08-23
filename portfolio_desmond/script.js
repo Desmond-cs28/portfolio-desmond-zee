@@ -293,21 +293,26 @@ function handleSubmit(e) {
     return;
   }
 
-  const honeypot = e.target.querySelector('[name="honeypot"]');
+  const form = e.target;
+  const status = document.getElementById('form-status');
+  const honeypot = form.querySelector('[name="honeypot"]');
   if (honeypot && honeypot.value !== '') return;
 
-  const nameVal    = sanitise(e.target.querySelector('[placeholder="Your name"]').value.trim());
-  const emailVal   = sanitise(e.target.querySelector('[type="email"]').value.trim());
-  const messageVal = sanitise(e.target.querySelector('.form-textarea').value.trim());
+  const nameVal = sanitise(form.querySelector('[name="name"]').value.trim());
+  const emailVal = sanitise(form.querySelector('[name="email"]').value.trim());
+  const subjectVal = sanitise((form.querySelector('[name="subject"]').value || '').trim());
+  const messageVal = sanitise(form.querySelector('[name="message"]').value.trim());
 
-  if (nameVal.length > 120 || emailVal.length > 254 || messageVal.length > 2000) {
-    alert('One or more fields exceed the maximum allowed length.');
+  if (nameVal.length > 120 || emailVal.length > 254 || messageVal.length > 2000 || subjectVal.length > 200) {
+    status.textContent = 'One or more fields exceed the maximum allowed length.';
+    status.style.color = '#ff8a80';
     return;
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if (!emailRegex.test(emailVal)) {
-    alert('Please enter a valid email address.');
+    status.textContent = 'Please enter a valid email address.';
+    status.style.color = '#ff8a80';
     return;
   }
 
@@ -317,14 +322,45 @@ function handleSubmit(e) {
   btn.textContent = 'Sending...';
   btn.style.opacity = '0.7';
   btn.disabled = true;
+  status.textContent = 'Sending your message...';
+  status.style.color = 'var(--accent)';
 
-  setTimeout(() => {
-    btn.textContent = 'Message Sent ✓';
-    btn.style.opacity = '1';
-    btn.disabled = false;
-    e.target.reset();
-    setTimeout(() => { btn.textContent = 'Send Message →'; }, 3000);
-  }, 1200);
+  const formData = new FormData(form);
+  formData.set('_subject', subjectVal || 'New portfolio message');
+  formData.set('_captcha', 'false');
+
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network error');
+      }
+      return response.json().catch(() => ({}));
+    })
+    .then(() => {
+      btn.textContent = 'Message Sent ✓';
+      btn.style.opacity = '1';
+      btn.disabled = false;
+      status.textContent = 'Your message has been sent successfully.';
+      status.style.color = '#63d8ab';
+      form.reset();
+      setTimeout(() => {
+        btn.textContent = 'Send Message →';
+        status.textContent = '';
+      }, 3000);
+    })
+    .catch(() => {
+      btn.textContent = 'Try Again';
+      btn.style.opacity = '1';
+      btn.disabled = false;
+      status.textContent = 'Your message could not be sent. Please ensure the site is live online and try again.';
+      status.style.color = '#ff8a80';
+    });
 }
 
 /* ════════════════════════════════════════════════════════════
