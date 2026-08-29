@@ -17,13 +17,13 @@
           style-src   'self' 'unsafe-inline' https://fonts.googleapis.com;
           font-src    'self' https://fonts.gstatic.com;
           img-src     'self' data:;
-          connect-src 'none';
+          connect-src 'self' https://formsubmit.co;
           object-src  'none';
           frame-src   'none';
           base-uri    'self';
           form-action 'self';
         "/>
-  <meta name="referrer" content="no-referrer"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
   <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
   <meta http-equiv="X-Frame-Options" content="DENY"/>
   <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains"/>
@@ -478,7 +478,7 @@
         </div>
       </div>
 
-      <form class="contact-form reveal" id="contact-form" action="https://formsubmit.co/ajax/zambogunaad@gmail.com" method="POST" accept-charset="UTF-8" style="transition-delay: 0.15s;" onsubmit="handleSubmit(event)">
+      <form class="contact-form reveal" id="contact-form" action="https://formsubmit.co/ajax/zambogunaad@gmail.com" method="POST" accept-charset="UTF-8" style="transition-delay: 0.15s;">
         <input type="text" name="honeypot" style="display:none;" tabindex="-1" autocomplete="off"/>
         <input type="hidden" name="_captcha" value="false"/>
         <input type="hidden" name="_subject" value="New portfolio message"/>

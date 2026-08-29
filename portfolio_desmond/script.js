@@ -340,7 +340,12 @@ function handleSubmit(e) {
       if (!response.ok) {
         throw new Error('Network error');
       }
-      return response.json().catch(() => ({}));
+      return response.json();
+    })
+    .then(data => {
+      if (data && data.success === 'false') {
+        throw new Error(data.message || 'Submission rejected');
+      }
     })
     .then(() => {
       btn.textContent = 'Message Sent ✓';
@@ -358,7 +363,7 @@ function handleSubmit(e) {
       btn.textContent = 'Try Again';
       btn.style.opacity = '1';
       btn.disabled = false;
-      status.textContent = 'Your message could not be sent. Please ensure the site is live online and try again.';
+      status.textContent = 'Something went wrong and your message could not be sent. Please try again, or email me directly instead.';
       status.style.color = '#ff8a80';
     });
 }
@@ -394,3 +399,6 @@ initSlides();
 buildDotsAndArrows();
 wireNavLinks();
 updateNavActive(currentSectionId);
+
+const contactForm = document.getElementById('contact-form');
+if (contactForm) contactForm.addEventListener('submit', handleSubmit);
